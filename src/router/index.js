@@ -13,6 +13,11 @@ const routes = [
         component: () => import("@/views/CartShop.vue"),
     },
     {
+        path: "/orders/:id",
+        name: "orders",
+        component: () => import("@/views/CartShop.vue"),
+    },
+    {
         path: "/login",
         name: "login",
         component: () => import("@/views/LoginUser.vue"),
@@ -46,6 +51,11 @@ const routes = [
         path: "/admin",
         name: "admin",
         component: () => import("@/views/Adminview.vue"),
+    },
+    {
+        path: "/admin2",
+        name: "admin2",
+        component: () => import("@/views/Adminview2.vue"),
     },
     {
         path: "/:pathMatch(.*)*",

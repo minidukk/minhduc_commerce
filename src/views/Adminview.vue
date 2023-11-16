@@ -6,6 +6,8 @@ import toastsVue from "../components/toasts.vue";
 import ProductService from "../services/Product.service";
 import ListProduct from "../components/ListProduct.vue";
 import Productcard from "../components/Productcard.vue";
+import OrderService from "../services/Order.service";
+import ListOrder from "../components/ListOrder.vue";
 import Usercard from "../components/Usercard.vue";
 import toast from "../assets/js/toasts";
 export default {
@@ -13,8 +15,10 @@ export default {
         return {
             users: [],
             products: [],
+            orders: [],
             activeIndex: -1,
             activeUser: -1,
+            activeOrder: -1,
             toasts: {
                 title: "Warning",
                 msg: "Bạn không phải ADMIN",
@@ -43,12 +47,23 @@ export default {
                 list[this.activeUser].classList.add("active");
                 return this.users[this.activeUser];
             }
+        },
+        getindexorder() {
+            if (this.activeOrder != -1) {
+                const list = document.querySelectorAll(".order-item");
+                list.forEach(element => {
+                    element.classList.remove("active");
+                });
+                list[this.activeOrder].classList.add("active");
+                return this.users[this.activeOrder];
+            }
         }
     },
     components: {
         HeaderShopVue,
         ListUser,
         ListProduct,
+        ListOrder,
         toastsVue,
         Productcard,
         Usercard
@@ -59,6 +74,7 @@ export default {
             try {
                 this.products = await ProductService.getAll();
                 this.users = await UserService.getAll();
+                this.orders = await OrderService.getAll();
             } catch (error) {
                 console.log(error);
                 this.toast();
@@ -96,14 +112,14 @@ export default {
     <div style="margin-top:30px; margin-left: 100px;">
         <div class="list_products">
             <div class="product_heading">
-                <h4>Danh Sách Truyện</h4>
+                <h4>Danh Sách Sản Phẩm</h4>
             </div>
             <div class="list_item_product d-flex" id="product">
                 <ListProduct :products="products" :refeshlist="getall" :getindex="getindex"
                     v-model:activeIndex="activeIndex"></ListProduct>
                 <div class="card_product border border-light border-2 h-100 bg-light text-dark" style="padding: 10px;"
                     v-if="getindex">
-                    <h5>Chi tiết truyện</h5>
+                    <h5>Chi tiết sản phẩm</h5>
                     <Productcard :products="getindex"></Productcard>
                     <router-link :to="{
                         name: 'editproduct',
@@ -115,21 +131,33 @@ export default {
                 </div>
             </div>
             <router-link to="/addproduct">
-                <button class="btn btn-danger">Thêm truyện</button>
+                <button class="btn btn-danger">Thêm sản phẩm</button>
             </router-link>
+        </div>
+    </div>
+    <div style="margin-top:30px; margin-left: 100px;">
+        <div class="list_users w-50 ">
+            <div class="user_heading">
+                <h4>Danh Sách Order</h4>
+            </div>
+            <div class="list_item_user d-flex">
+                <ListOrder :orders="orders" :refeshlist="getall" v-model:activeOrder="activeOrder"></ListOrder>
+                <div class="card_product border border-light border-2 h-100 bg-light text-dark" style="padding: 10px;"
+                    v-if="getindexorder">
+                    <h5>Chi tiết</h5>
+                    <router-link :to="{
+                            name: 'orders',
+                            params: { id: getindex._id },
+                        }">
+                        </router-link>
+                    <!-- <Usercard :users="getindexorder"></Usercard> -->
+                </div>
+            </div>
         </div>
     </div>
 </template>
 <style scoped>
-.list_item_product,
-.list_item_user {
-    max-height: 500px;
-    overflow-y: scroll;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-}
+
 
 #product::-webkit-scrollbar,
 #user::-webkit-scrollbar {

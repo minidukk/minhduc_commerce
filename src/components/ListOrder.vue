@@ -1,5 +1,5 @@
 <script>
-import UserService from "../services/Order.service";
+import OrderService from "../services/Order.service";
 import toastjs from "../assets/js/toasts";
 export default {
     data() {
@@ -13,7 +13,7 @@ export default {
         }
     },
     props: {
-        users: Array,
+        orders: Array,
         refeshlist: Function,
         activeUser: { type: Number, default: -1 },
     },
@@ -22,7 +22,7 @@ export default {
         toastjs,
         async deleteuser(id) {
             try {
-                await UserService.delete(id);
+                await OrderService.delete(id);
                 this.refeshlist();
                 this.toasts.title = "Success",
                     this.toasts.msg = "Đã xóa order",
@@ -47,11 +47,11 @@ export default {
 </script>
 <template>
     <ul class="list-group">
-        <li class="list-group-item user-item d-flex justify-content-between" v-for="(user, index) in users"
+        <li class="list-group-item order-item d-flex justify-content-between" v-for="(user, index) in orders"
             v-show="!user.isAdmin" :key="user._id" @click="updateuserindex(index)">
-            <span>{{ user.username }}</span>
-
-            <!-- <button class="bi bi-x-square text-danger" @click="deleteuser(user._id)"></button> -->
+            <span>{{ user.userId }}</span>
+            <button class="btn btn-outline-danger btn-sm" @click="deleteuser(user._id)">X</button>
+            
         </li>
     </ul>
 </template>
