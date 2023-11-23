@@ -38,8 +38,8 @@ export default {
                 this.toastjs();
             }
         },
-        updateuserindex(index) {
-            this.$emit("update:activeUser", index)
+        emitUser(userId) {
+            this.$emit('selectedOrder', userId);
         }
     }
 }
@@ -47,8 +47,8 @@ export default {
 </script>
 <template>
     <ul class="list-group">
-        <li class="list-group-item order-item d-flex justify-content-between" v-for="(user, index) in orders"
-            v-show="!user.isAdmin" :key="user._id" @click="updateuserindex(index)">
+        <li class="list-group-item order-item d-flex justify-content-between" v-for="user in orders"
+            v-show="!user.isAdmin" :key="user._id" @click="emitUser(user.userId)">
             <span>{{ user.userId }}</span>
             <button class="btn btn-outline-danger btn-sm" @click="deleteuser(user._id)">X</button>
             

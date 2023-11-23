@@ -87,16 +87,16 @@ export default {
         </ul>
 
         <div>
-          <button style="background-color:#ec4c2d" class=" navbar-nav me-auto mb-2 mb-lg-0 btn" @click="gotocart"><i class="bi bi-bag-fill icon"></i></button>
+          <button style="background-color:#ec4c2d" class=" navbar-nav me-auto mb-2 mb-lg-0 btn " @click="gotocart"><i class="bi bi-bag-fill icon" style="color: rgb(255, 255, 255);"></i></button>
         </div>
 
         <div class="User nav-item">
           <div class="not-login">
-            <i class="bi bi-person-circle icon" data-bs-toggle="collapse" href="#user"></i>
+            <i class="bi bi-person-circle icon" style="color: rgb(255, 255, 255);" data-bs-toggle="collapse" href="#user"></i>
             <div class="collapse user_link" id="user">
               <div class="card card-body bg-dark connect-shop">
                 <router-link to="/login" class="text-white">Đăng nhập</router-link>
-                <router-link to="/logup" class="text-white">Đăng ký</router-link>
+                <router-link to="/register" class="text-white">Đăng ký</router-link>
               </div>
             </div>
           </div>
@@ -105,8 +105,6 @@ export default {
             <div class="collapse user_link" id="user">
               <div class="card card-body bg-dark connect-shop">
                 <router-link to="/profile" class="text-white">Trang cá nhân</router-link>
-                <router-link to="/addproduct" class="text-white">Thêm sản phẩm</router-link>
-                <router-link to="/admin" class="text-white">Quản trị viên</router-link>
                 <a to="/" class="text-white" @click="handlelogout()">Đăng xuất</a>
               </div>
             </div>

@@ -18,20 +18,11 @@
             .required("Hình ảnh phải có giá trị."),
             price: yup
             .string()
-            .required("Lượt xem phải có giá trị."),
+            .required("Giá sản phẩm phải có giá trị."),
             description: yup
             .string()
-            .required("Mô tả truyện không được để trống.")
-            .min(5, "Tên phải ít nhất 5 ký tự."),
-            category: yup
-            .string()
-            .required("Thể loại không được để trống."),
-            size: yup
-            .string()
-            .required("Tình trạng truyện không được để trống."),
-            color: yup
-            .string()
-            .required("Tên tác giả không được để trống."),
+            .required("Mô tả sản phẩm không được để trống.")
+            .min(5, "Mô tả sản phẩm phải ít nhất 5 ký tự."),
             });
             return {
             productLocal:this.product,
@@ -58,44 +49,29 @@
   }
 </script>
 <template>
-<div class="wrapper">
+<div>
     <Form :validation-schema="productform"  @submit="submitproduct" >
       <div class="form-group">
-        <label for="nameproduct">Tên truyện</label>
-        <Field type="text" class="form-control" id="nameproduct" name="name" placeholder="Nhập tên truyện" v-model="productLocal.title" />
+        <label for="nameproduct">Tên sản phẩm</label>
+        <Field type="text" class="form-control" id="nameproduct" name="name" placeholder="Nhập tên sản phẩm" v-model="productLocal.title" />
         <ErrorMessage name="name" class="text-danger" />
       </div>
     <div class="form-group">
-        <label for="imgproduct">Image</label>
+        <label for="imgproduct">Hình</label>
         <div style="display: flex; flex-direction: row;">
-        <Field type="text" class="form-control" id="imgproduct" name="img" placeholder="Nhập link ảnh truyện" v-model="productLocal.img[0]"/>
+        <Field type="text" class="form-control" id="imgproduct" name="img" placeholder="Nhập link ảnh sản phẩm" v-model="productLocal.img[0]"/>
         </div>
 
       </div>
       <div class="form-group">
-        <label for="priceproduct">Lượt xem</label>
-        <Field type="number" class="form-control" id="priceproduct" name="price" placeholder="Nhập số lượt xem" v-model="productLocal.price" />
+        <label for="priceproduct">Giá sản phẩm</label>
+        <Field type="number" class="form-control" id="priceproduct" name="price" placeholder="Nhập giá sản phẩm" v-model="productLocal.price" />
         <ErrorMessage name="price" class="text-danger"  />
       </div>
       <div class="form-group">
-        <label for="nameproduct">Tóm tắt truyện</label>
-        <Field type="text" class="form-control" id="nameproduct" name="description"  placeholder="Nhập mô tả truyện" v-model="productLocal.desc"/>
+        <label for="nameproduct">Mô tả sản phẩm</label>
+        <Field type="text" class="form-control" id="nameproduct" name="description"  placeholder="Nhập mô tả sản phẩm" v-model="productLocal.desc"/>
           <ErrorMessage name="description" class="text-danger" />
-      </div>
-      <div class="form-group">
-        <label for="categoryproduct">Thể loại</label>
-        <Field type="text" class="form-control" id="categoryproduct" name="category" placeholder="Nhập thể loại" v-model="productLocal.categories"/>
-          <ErrorMessage name="category" class="text-danger" />
-      </div>
-      <div class="form-group">
-        <label for="sizeproduct">Tình trạng truyện</label>
-        <Field type="text" class="form-control" id="sizeproduct" name="size" placeholder="Nhập trình trạng truyện" v-model="productLocal.size"/>
-          <ErrorMessage name="size" class="text-danger" />
-      </div>
-       <div class="form-group">
-        <label for="colorproduct">Tên tác giả</label>
-        <Field type="text" class="form-control" id="colorproduct" name="color"  placeholder="Nhập tên tác giả" v-model="productLocal.color"/>
-          <ErrorMessage name="color" class="text-danger" />
       </div>
       <button type="submit" class="btn btn-primary">Lưu</button>
        <router-link to="/admin" style="margin: 10px;">
@@ -106,9 +82,7 @@
 </div>
 </template>
 <style scoped>
-.wrapper{
-    margin: 50px 200px;
-}
+
 .btn_img-add{
  font-size: 30px; 
  color: dodgerblue;

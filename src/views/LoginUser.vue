@@ -12,6 +12,6 @@
 <template>
 <toastsVue></toastsVue>
 <Formlogin></Formlogin>
-
+<h6 class="mb-0"><router-link to="/" class="text-body">Trở về</router-link></h6>
 
 </template>

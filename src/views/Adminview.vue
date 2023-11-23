@@ -9,6 +9,7 @@ import Productcard from "../components/Productcard.vue";
 import OrderService from "../services/Order.service";
 import ListOrder from "../components/ListOrder.vue";
 import Usercard from "../components/Usercard.vue";
+import Ordercard from "../components/Ordercard.vue";
 import toast from "../assets/js/toasts";
 export default {
     data() {
@@ -66,7 +67,8 @@ export default {
         ListOrder,
         toastsVue,
         Productcard,
-        Usercard
+        Usercard,
+        Ordercard
     },
     methods: {
         toast,
@@ -79,7 +81,7 @@ export default {
                 console.log(error);
                 this.toast();
                 setTimeout(() => {
-                    this.$router.push({ name: "NovelMain" });
+                    this.$router.push({ name: "ShopMain" });
                 }, 1000);
             }
         },
@@ -131,7 +133,7 @@ export default {
                 </div>
             </div>
             <router-link to="/addproduct">
-                <button class="btn btn-danger">Thêm sản phẩm</button>
+                <button class="btn btn-danger my-2">Thêm sản phẩm</button>
             </router-link>
         </div>
     </div>
@@ -150,10 +152,14 @@ export default {
                             params: { id: getindex._id },
                         }">
                         </router-link>
-                    <!-- <Usercard :users="getindexorder"></Usercard> -->
+                    <Ordercard :users="getindexorder"></Ordercard>
                 </div>
+                
             </div>
         </div>
+        <router-link to="/orderpage">
+                <button class="btn btn-success my-2">Xem chi tiết</button>
+            </router-link>
     </div>
 </template>
 <style scoped>

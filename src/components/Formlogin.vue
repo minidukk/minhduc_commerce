@@ -91,7 +91,7 @@
               <button class="btn"
                 style="padding-left: 2.5rem; padding-right: 2.5rem;">Đăng Nhập</button>
             <p>Bạn chưa có tài khoản? 
-              <router-link to="/logup" class="link-danger">Đăng Ký</router-link>
+              <router-link to="/register" class="link-danger">Đăng Ký</router-link>
             </p>
           </div>
         </Form>

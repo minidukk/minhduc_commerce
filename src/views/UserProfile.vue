@@ -61,6 +61,8 @@ export default {
 			<button class="btn btn-danger">Trở về</button>
 		</router-link>
 		<button class="btn btn-warning text-light" style="margin-left: 20px;" @click="showedit">Hiệu chỉnh</button>
+		<router-link to="/admin" class="text-white" v-show="this.currentUser.isAdmin"><button class="btn btn-success text-light" style="margin-left: 20px;">Admin</button></router-link>
+                
 	</div>
 	<div v-if="checkedit" style="display: flex;flex-direction: column;justify-content: center;">
 			<EditUser :user="currentUser"></EditUser>

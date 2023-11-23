@@ -12,7 +12,7 @@ export default {
         toastsVue
     },
     data() {
-        const Logupform = yup.object().shape({
+        const Regform = yup.object().shape({
             name: yup
                 .string()
                 .required("Tên phải có giá trị.")
@@ -27,7 +27,7 @@ export default {
                 .required("Mật khẩu phải có giá trị.")
         });
         return {
-            Logupform,
+            Regform,
             message: "Đăng ký thành công",
             usernew: {
                 username: "",
@@ -72,7 +72,7 @@ export default {
     <toastsVue></toastsVue>
     <section>
         <h1>Tạo Tài Khoản Mới</h1>
-        <Form :validation-schema="Logupform">
+        <Form :validation-schema="Regform">
             <div>
                 <label class="form-label" for="name">Tên Tài Khoản:</label>
                 <Field id="name" name="name" type="text" class="form-control" v-model="usernew.username" />
@@ -102,6 +102,6 @@ export default {
             </button>
             <p>Nếu bạn đã có tài khoản hãy =><router-link to="/login"> Đăng nhập</router-link></p>
         </Form>
-
+        <h6 class="mb-0"><router-link to="/" class="text-body">Trở về</router-link></h6>
     </section>
 </template>

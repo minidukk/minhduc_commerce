@@ -47,18 +47,18 @@ export default {
     <div class="slider">
         <SliderShop></SliderShop>
     </div>
-    <div style="margin: 20px 100px;">
-        <div style="text-align: center; margin: 30px 0;" class="heading">
+    <div>
+        <div style="text-align: center; margin-top:30px">
             <h3>Đồng hồ luxury</h3>
             <h6>những chiếc đồng hồ sang trọng nhất</h6>
         </div>
-        <div class="flex-row" style="margin:0 100px;">
+        <div style="margin-top:20px">
             <div class="d-sm-flex flex-wrap" id="x">
                 <div class="card m-1" style="width: 18rem;" v-for="item in Products">
                     <div>
                         <div>
                             <div class="image_item" v-for="img in item.img">
-                                <img :src="img" class="card-img-top" alt="...">
+                                <img :src="img" class="card-img-top" alt="bruh">
                             </div>
                         </div>
                     </div>
