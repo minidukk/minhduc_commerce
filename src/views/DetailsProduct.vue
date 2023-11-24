@@ -64,18 +64,12 @@ export default {
                         CartService.update(cartproduct._id, this.cartitem);
                         exitcart = true;
                         this.toastsjs();
-                        setTimeout(() => {
-                            this.$router.push({ name: 'Truyện' });
-                        }, 1000);
                     }
                 })
                 if (existcart === false) {
                     this.cartitem.userId = this.currentUser._id;
                     CartService.create(this.cartitem);
                     this.toastsjs();
-                    setTimeout(() => {
-                        this.$router.push({ name: 'Truyện' });
-                    }, 1000);
                 }
             } catch (error) {
                 this.toasts.title = "Message",

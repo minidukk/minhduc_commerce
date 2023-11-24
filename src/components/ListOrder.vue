@@ -38,7 +38,7 @@ export default {
                 this.toastjs();
             }
         },
-        emitUser(userId) {
+        emitOrder(userId) {
             this.$emit('selectedOrder', userId);
         }
     }
@@ -48,7 +48,7 @@ export default {
 <template>
     <ul class="list-group">
         <li class="list-group-item order-item d-flex justify-content-between" v-for="user in orders"
-            v-show="!user.isAdmin" :key="user._id" @click="emitUser(user.userId)">
+            v-show="!user.isAdmin" :key="user._id" v-on:click="emitOrder(user.userId)">
             <span>{{ user.userId }}</span>
             <button class="btn btn-outline-danger btn-sm" @click="deleteuser(user._id)">X</button>
             
