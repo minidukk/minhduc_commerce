@@ -90,11 +90,9 @@ export default {
 <template>
     <HeaderShop></HeaderShop>
     <toastsVue></toastsVue>
-    <div class="heading">
-        <div class="title" style="background-color: #e9ecef;">
-            <h2 class="text-dark text-center" style="padding-left: 20px;">Chi tiết sản phẩm</h2>
-        </div>
-    </div>
+
+    <h2>Chi tiết sản phẩm</h2>
+ 
     <div class="wrapper">
         <div class="details d-flex justify-content-between">
             <div class="img_product col">
@@ -118,9 +116,6 @@ export default {
                 </div>
                 <div class="btn_product">
                     <button type="submit" class="btn btn-danger" style="width:150px;" @click="getidcart()">THÊM</button>
-                    <router-link to="/">
-                        <button type="button" class="btn btn-danger" style="width:150px;">Trở Về</button>
-                    </router-link>
                 </div>
             </div>
             <div class="describe_product col">
@@ -130,48 +125,5 @@ export default {
             </div>
         </div>
     </div>
+    <h6 class="mb-0"><router-link to="/" class="text-body">Trở về</router-link></h6>
 </template>
-<style scoped>
-.btn_product {
-    display: flex;
-    justify-content: space-around;
-}
-
-.size_product,
-.color_product {
-    display: flex;
-    flex-direction: column;
-    max-width: 400px;
-}
-
-.list_btn_size,
-.list_btn_color {
-    margin: 0 10px;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.list_btn_size button,
-.list_btn_color button {
-    margin: 10px 5px;
-}
-
-.btn {
-    width: 100px;
-}
-
-.wrapper {
-    margin: 50px 100px;
-}
-
-.heading {
-    margin: 0 100px;
-}
-
-.title {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    width: 100%;
-    height: 100px;
-}</style>
